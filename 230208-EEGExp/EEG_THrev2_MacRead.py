@@ -53,7 +53,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='"C:\\Users\\45239\\Documents\\PythonScripts\\230208-EEGExp\\EEG_THrev.py"',
+    #originPath='"C:\\Users\\45239\\Documents\\PythonScripts\\230208-EEGExp\\EEG_THrev.py"',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -157,6 +157,7 @@ C5.setVolume(1.0, log = False)
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine
 
+triggers = [10, 22, 23, 25, 26, 27, 30] #10 for congruent, 20's for incongruency and 30 for postincongruent
 
 
 def func_trialC(note):
@@ -207,7 +208,7 @@ def func_trialC(note):
             C4.frameNStart = frameN  # exact frame index
             C4.tStart = t  # local t and not account for scr refresh
             C4.tStartRefresh = tThisFlipGlobal  # on global time
-            win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+            win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
             pullTriggerDown = True #Pull trigger
             C4.play(when=win)  # sync with win flip
         
@@ -232,7 +233,7 @@ def func_trialC(note):
                 Db.frameNStart = frameN  # exact frame index
                 Db.tStart = t  # local t and not account for scr refresh
                 Db.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['incongruentDb']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[1]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 Db.play(when=win)  # sync with win flip
 
@@ -255,7 +256,7 @@ def func_trialC(note):
                 D.frameNStart = frameN  # exact frame index
                 D.tStart = t  # local t and not account for scr refresh
                 D.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 D.play(when=win)  # sync with win flip
 
@@ -280,7 +281,7 @@ def func_trialC(note):
                 Eb.frameNStart = frameN  # exact frame index
                 Eb.tStart = t  # local t and not account for scr refresh
                 Eb.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['incongruentEb']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[2]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 Eb.play(when=win)  # sync with win flip
 
@@ -305,9 +306,9 @@ def func_trialC(note):
                 E.tStart = t  # local t and not account for scr refresh
                 E.tStartRefresh = tThisFlipGlobal  # on global time
                 if note == 'Db':
-                    win.callOnFlip(setParallelData, trial['postincongruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[6]) #Prepare trigger
                 else:
-                    win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 E.play(when=win)  # sync with win flip
 
@@ -331,9 +332,9 @@ def func_trialC(note):
             F.tStart = t  # local t and not account for scr refresh
             F.tStartRefresh = tThisFlipGlobal  # on global time
             if note == 'Eb':
-                win.callOnFlip(setParallelData, trial['postincongruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[6]) #Prepare trigger
             else:
-                win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
             pullTriggerDown = True #Pull trigger
             F.play(when=win)  # sync with win flip
 
@@ -358,7 +359,7 @@ def func_trialC(note):
                 Gb.frameNStart = frameN  # exact frame index
                 Gb.tStart = t  # local t and not account for scr refresh
                 Gb.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['incongruentGb']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[3]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 Gb.play(when=win)  # sync with win flip
 
@@ -382,7 +383,7 @@ def func_trialC(note):
                 G.frameNStart = frameN  # exact frame index
                 G.tStart = t  # local t and not account for scr refresh
                 G.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 G.play(when=win)  # sync with win flip
 
@@ -408,7 +409,7 @@ def func_trialC(note):
                 Ab.frameNStart = frameN  # exact frame index
                 Ab.tStart = t  # local t and not account for scr refresh
                 Ab.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['incongruentAb']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[4]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 Ab.play(when=win)  # sync with win flip
 
@@ -434,9 +435,9 @@ def func_trialC(note):
                 A.tStart = t  # local t and not account for scr refresh
                 A.tStartRefresh = tThisFlipGlobal  # on global time
                 if note == 'Gb':
-                    win.callOnFlip(setParallelData, trial['postincongruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[6]) #Prepare trigger
                 else:
-                    win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 A.play(when=win)  # sync with win flip
 
@@ -462,7 +463,7 @@ def func_trialC(note):
                 Bb.frameNStart = frameN  # exact frame index
                 Bb.tStart = t  # local t and not account for scr refresh
                 Bb.tStartRefresh = tThisFlipGlobal  # on global time
-                win.callOnFlip(setParallelData, trial['incongruentBb']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[5]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 Bb.play(when=win)  # sync with win flip
 
@@ -488,9 +489,9 @@ def func_trialC(note):
                 B.tStart = t  # local t and not account for scr refresh
                 B.tStartRefresh = tThisFlipGlobal  # on global time
                 if note == 'Ab':
-                    win.callOnFlip(setParallelData, trial['postincongruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[6]) #Prepare trigger
                 else:
-                    win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                    win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
                 pullTriggerDown = True  # Pull trigger
                 B.play(when=win)  # sync with win flip
 
@@ -514,9 +515,9 @@ def func_trialC(note):
             C5.tStart = t  # local t and not account for scr refresh
             C5.tStartRefresh = tThisFlipGlobal  # on global time
             if note == 'Bb':
-                win.callOnFlip(setParallelData, trial['postincongruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[6]) #Prepare trigger
             else:
-                win.callOnFlip(setParallelData, trial['congruent']) #Prepare trigger
+                win.callOnFlip(setParallelData, triggers[0]) #Prepare trigger
             pullTriggerDown = True #Pull trigger
             C5.play(when=win)  # sync with win flip
             
